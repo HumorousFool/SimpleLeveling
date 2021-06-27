@@ -1,0 +1,29 @@
+name: SimpleLeveling
+version: ${project.version}
+main: io.github.humorousfool.simpleleveling.SimpleLeveling
+api-version: 1.16
+prefix: SimpleLeveling
+authors: [HumorousFool]
+description: A simple XP leveling system plugin for Minecraft.
+website: https://humorousfool.github.io
+softdepend: [PlaceholderAPI, MythicMobs]
+
+commands:
+  simpleleveling:
+    description: Gets the xp of a player.
+    aliases: [simplelevel, slevel]
+    usage: /<command> <player|subcommand>
+
+permissions:
+  simpleleveling.command.get:
+    description: Allows you to get your own xp.
+    default: op
+  simpleleveling.command.get.other:
+    description: Allows you to get the xp of other players.
+    default: op
+  simpleleveling.command.add:
+    description: Allows you to give players XP.
+    default: op
+  simpleleveling.command.leaderboard:
+    description: Allows you to see the level leaderboard.
+    default: op

@@ -1,0 +1,7 @@
+2:
+  - give <player> stone_sword
+20:
+  - give <player> diamond_sword
+  - say Congradulations to <player> for reaching level 20!
+100:
+  - give <player> emerald 10

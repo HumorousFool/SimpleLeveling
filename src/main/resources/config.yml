@@ -1,0 +1,52 @@
+Locale: en
+
+OverrideVanillaXp: true
+
+StartLevel: 1
+MaxLevel: 100
+
+XpBaseAmount: 0
+XpBaseAmountPerLevel: 100
+XpMultiplier: 1
+
+DefaultBlockBreakXp: 0
+XpPerBlockBreak:
+  COAL_ORE: 10
+  IRON_ORE: 15
+  NETHER_QUARTZ_ORE: 25
+  REDSTONE_ORE: 25
+  DIAMOND_ORE: 50
+  ANCIENT_DEBRIS: 100
+
+DefaultBlockPlaceXp: 0
+XpPerBlockPlace:
+  LECTERN: 10
+
+DefaultCraftingXp: 0
+XpPerItemCrafted:
+  BEACON: 100
+
+DefaultKillXp: 10
+XpPerEntityKill:
+  BLAZE: 30
+  GHAST: 30
+  VINDICATOR: 50
+  EVOKER: 70
+  PLAYER: 100
+  RAVAGER: 100
+  WITHER: 5000
+  ENDER_DRAGON: 20000
+
+DefaultBreedXp: 20
+XpPerEntityBreed:
+  HORSE: 50
+
+DefaultTameXp: 20
+XpPerEntityTame:
+  WOLF: 50
+  CAT: 50
+
+DefaultFishingXp: 10
+XpPerItemFished:
+  RAW_SALMON: 20
+  ENCHANTED_BOOK: 40
