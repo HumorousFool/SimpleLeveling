@@ -6,7 +6,7 @@ prefix: SimpleLeveling
 authors: [HumorousFool]
 description: A simple XP leveling system plugin for Minecraft.
 website: https://humorousfool.github.io
-softdepend: [PlaceholderAPI, MythicMobs]
+softdepend: [PlaceholderAPI]
 
 commands:
   simpleleveling:
