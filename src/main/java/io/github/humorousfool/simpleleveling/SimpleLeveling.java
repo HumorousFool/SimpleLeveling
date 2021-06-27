@@ -94,6 +94,7 @@ public final class SimpleLeveling extends JavaPlugin
     public void onDisable()
     {
         expansion.unregister();
+        saveAll();
         instance = null;
     }
 
@@ -151,6 +152,23 @@ public final class SimpleLeveling extends JavaPlugin
         Level l = levels.get(player);
         int[] data = new int[] {l.level, l.xp};
         levelsYaml.set(player.getUniqueId().toString(), data);
+
+        try {
+            levelsYaml.save(levelsFile);
+        } catch (IOException e) {
+            getLogger().log(java.util.logging.Level.SEVERE, "Failed to save levels!");
+            e.printStackTrace();
+        }
+    }
+
+    public void saveAll()
+    {
+        for(Player player : levels.keySet())
+        {
+            Level l = levels.get(player);
+            int[] data = new int[] {l.level, l.xp};
+            levelsYaml.set(player.getUniqueId().toString(), data);
+        }
 
         try {
             levelsYaml.save(levelsFile);

@@ -17,7 +17,7 @@ public class LevelExpansion extends PlaceholderExpansion
 
     @Override
     public @NotNull String getIdentifier() {
-        return "simpleveling";
+        return "simpleleveling";
     }
 
     @Override
@@ -33,7 +33,7 @@ public class LevelExpansion extends PlaceholderExpansion
     @Override
     public String onRequest(OfflinePlayer player, @NotNull String identifier)
     {
-        if(identifier.equals("simple_level"))
+        if(identifier.equals("level"))
         {
             if(player.isOnline())
             {
@@ -49,7 +49,7 @@ public class LevelExpansion extends PlaceholderExpansion
                 return "0";
             return Integer.toString(level.level);
         }
-        else if(identifier.equals("simple_xp"))
+        else if(identifier.equals("xp"))
         {
             if (player.isOnline()) {
                 Player online = (Player) player;
