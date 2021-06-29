@@ -76,7 +76,8 @@ public class SimpleLevelingCommand implements CommandExecutor, TabCompleter
         Level level = SimpleLeveling.getInstance().getLevel(player);
 
         sender.sendMessage(ChatColor.GREEN + I18nSupport.getInternationalisedString("Level") + " " + ChatColor.DARK_AQUA + level.level);
-        sender.sendMessage(ChatColor.GREEN + I18nSupport.getInternationalisedString("Xp") + " " + ChatColor.DARK_AQUA + level.xp);
+        sender.sendMessage(ChatColor.GREEN + I18nSupport.getInternationalisedString("Xp") + " " +
+                ChatColor.DARK_AQUA + level.xp + ChatColor.GREEN + "/" + ChatColor.AQUA + level.getMaxXp());
     }
 
     private void addCommand(CommandSender sender, String[] args)
