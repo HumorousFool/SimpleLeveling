@@ -12,6 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -150,7 +151,9 @@ public final class SimpleLeveling extends JavaPlugin
     {
         if(!levels.containsKey(player)) return;
         Level l = levels.get(player);
-        int[] data = new int[] {l.level, l.xp};
+        List<Integer> data = new ArrayList<>();
+        data.add(l.level);
+        data.add(l.xp);
         levelsYaml.set(player.getUniqueId().toString(), data);
 
         try {
@@ -166,7 +169,9 @@ public final class SimpleLeveling extends JavaPlugin
         for(Player player : levels.keySet())
         {
             Level l = levels.get(player);
-            int[] data = new int[] {l.level, l.xp};
+            List<Integer> data = new ArrayList<>();
+            data.add(l.level);
+            data.add(l.xp);
             levelsYaml.set(player.getUniqueId().toString(), data);
         }
 
@@ -181,7 +186,9 @@ public final class SimpleLeveling extends JavaPlugin
     public void resetPlayer(Player player)
     {
         levels.remove(player);
-        int[] data = new int[] {1, 0};
+        List<Integer> data = new ArrayList<>();
+        data.add(1);
+        data.add(0);
         levelsYaml.set(player.getUniqueId().toString(), data);
         levels.put(player, new Level(1, 0));
         player.setLevel(1);
