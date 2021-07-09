@@ -1,5 +1,6 @@
 package io.github.humorousfool.simpleleveling.config;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.MemorySection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -12,12 +13,17 @@ public class Config
     public static String Locale = "en";
     public static boolean OverrideVanillaXp = true;
 
+    public static HashMap<Integer, String> BroadcastMessages = new HashMap<>();
+
     public static int StartLevel = 1;
     public static int MaxLevel = 100;
 
     public static int XpBaseAmount = 0;
     public static int XpBaseAmountPerLevel = 100;
     public static double XpMultiplier = 1D;
+
+    public static int RemoveXpOnDeathAfterLevel = 10;
+    public static int RemoveXpMaxAmount = 1000;
 
     public static int DefaultBlockBreakXp = 0;
     public static HashMap<Material, Integer> XpPerBlockBreak = new HashMap<>();
@@ -46,12 +52,17 @@ public class Config
 
         OverrideVanillaXp = file.getBoolean("OverrideVanillaXp", true);
 
+        BroadcastMessages = getBroadcastMap((MemorySection) file.get("BroadcastMessages"));
+
         StartLevel = file.getInt("StartLevel", 1);
         MaxLevel = file.getInt("MaxLevel", 100);
 
         XpBaseAmount = file.getInt("XpBaseAmountPerLevel", 100);
         XpBaseAmountPerLevel = file.getInt("XpBaseAmountPerLevel", 100);
         XpMultiplier = file.getDouble("XpMultipler", 1D);
+
+        RemoveXpOnDeathAfterLevel = file.getInt("RemoveXpOnDeathAfterLevel", 10);
+        RemoveXpMaxAmount = file.getInt("RemoveXpMAxAmount", 1000);
 
         DefaultBlockBreakXp = file.getInt("DefaultBlockBreakXp", 0);
         XpPerBlockBreak = getMaterialMap((MemorySection) file.get("XpPerBlockBreak"));
@@ -102,6 +113,22 @@ public class Config
         {
             EntityType entityType = EntityType.valueOf(key);
             map.put(entityType, memorySection.getInt(key));
+        }
+
+        return map;
+    }
+
+    private static HashMap<Integer, String> getBroadcastMap(MemorySection memorySection)
+    {
+        HashMap<Integer, String> map = new HashMap<>();
+
+        if(memorySection == null)
+            return map;
+
+        for(String key : memorySection.getKeys(false))
+        {
+            map.put(Integer.parseInt(key), memorySection.getString(key, ChatColor.RED + "Failed to load broadcast message!")
+                    .replace("&", "§"));
         }
 
         return map;

@@ -87,7 +87,7 @@ public final class SimpleLeveling extends JavaPlugin
                 Config.DefaultTameXp != 0 || !Config.XpPerEntityTame.isEmpty())
             getServer().getPluginManager().registerEvents(new EntityListener(), this);
         if(Config.DefaultCraftingXp != 0 || !Config.XpPerItemCrafted.isEmpty() ||
-                Config.DefaultFishingXp != 0 || !Config.XpPerItemFished.isEmpty())
+                Config.DefaultFishingXp != 0 || !Config.XpPerItemFished.isEmpty() || Config.RemoveXpMaxAmount != 0)
             getServer().getPluginManager().registerEvents(new PlayerListener(), this);
     }
 
@@ -121,6 +121,19 @@ public final class SimpleLeveling extends JavaPlugin
             return null;
         else
             return new Level(l.get(0), l.get(1));
+    }
+
+    public void setLevel(Player player, Level level)
+    {
+        if(levels.containsKey(player))
+            levels.replace(player, level);
+        else levels.put(player, level);
+
+        if(Config.OverrideVanillaXp)
+        {
+            player.setLevel(level.level);
+            player.setExp((float) level.xp / (float) level.getMaxXp());
+        }
     }
 
     public void loadPlayer(Player player)

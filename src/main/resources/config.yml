@@ -2,12 +2,18 @@ Locale: en
 
 OverrideVanillaXp: true
 
+BroadcastMessages:
+  100: "&aCongradulations to &6<player>&a for reaching level &3100&a!"
+
 StartLevel: 1
 MaxLevel: 100
 
 XpBaseAmount: 0
 XpBaseAmountPerLevel: 100
 XpMultiplier: 1
+
+RemoveXpOnDeathAfterLevel: 10
+RemoveXpMaxAmount: 1000 #-1 for no limit
 
 DefaultBlockBreakXp: 0
 XpPerBlockBreak:

@@ -50,6 +50,9 @@ public class Level
                     player.setLevel(level);
                 player.sendMessage(ChatColor.GREEN + I18nSupport.getInternationalisedString("Level Up") + " " + ChatColor.DARK_AQUA + level + ChatColor.GREEN + "!");
                 Actions.runCommands(level, player.getName());
+                if(Config.BroadcastMessages.containsKey(level))
+                    player.getServer().broadcastMessage(Config.BroadcastMessages.get(level)
+                            .replace("<player>", player.getName()).replace("<level>", Integer.toString(level)));
 
                 amount = totalXp - (int) maxXp;
             }

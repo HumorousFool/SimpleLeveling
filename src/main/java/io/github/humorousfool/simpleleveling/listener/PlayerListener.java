@@ -1,5 +1,6 @@
 package io.github.humorousfool.simpleleveling.listener;
 
+import io.github.humorousfool.simpleleveling.Level;
 import io.github.humorousfool.simpleleveling.SimpleLeveling;
 import io.github.humorousfool.simpleleveling.config.Config;
 import org.bukkit.entity.EntityType;
@@ -8,12 +9,30 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class PlayerListener implements Listener
 {
+    @EventHandler
+    public void onDeath(PlayerDeathEvent event)
+    {
+        if(Config.RemoveXpMaxAmount == 0) return;
+        Level level = SimpleLeveling.getInstance().getLevel(event.getEntity());
+        if(level == null) return;
+
+        if(Config.RemoveXpMaxAmount > 0)
+        {
+            level.xp = Math.max(level.xp - Config.RemoveXpMaxAmount, 0);
+
+        }
+        else level.xp = 0;
+
+        SimpleLeveling.getInstance().setLevel(event.getEntity(), level);
+    }
+
     @EventHandler(priority = EventPriority.MONITOR)
     public void onCraft(CraftItemEvent event)
     {
