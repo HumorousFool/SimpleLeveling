@@ -59,7 +59,7 @@ public class Config
 
         XpBaseAmount = file.getInt("XpBaseAmountPerLevel", 100);
         XpBaseAmountPerLevel = file.getInt("XpBaseAmountPerLevel", 100);
-        XpMultiplier = file.getDouble("XpMultipler", 1D);
+        XpMultiplier = file.getDouble("XpMultiplier", 1D);
 
         RemoveXpOnDeathAfterLevel = file.getInt("RemoveXpOnDeathAfterLevel", 10);
         RemoveXpMaxAmount = file.getInt("RemoveXpMAxAmount", 1000);
